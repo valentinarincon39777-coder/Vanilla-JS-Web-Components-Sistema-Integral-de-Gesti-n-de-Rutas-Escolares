@@ -1,0 +1,361 @@
+
+/* =========================
+   GOOGLE FONTS
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+
+    --color-primary: #1a2a6c;
+    --color-accent: #ffcc00;
+
+    --color-white: #ffffff;
+    --color-text: #333333;
+    --color-light: #f4f4f4;
+
+    --font-title: "Montserrat", sans-serif;
+    --font-body: "Open Sans", sans-serif;
+
+    --radius: 16px;
+
+    --shadow:
+        0 10px 25px rgba(0,0,0,.08);
+
+    --transition:
+        all .25s ease;
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    background-color:var(--color-white);
+
+    color:var(--color-text);
+
+    font-family:var(--font-body);
+
+    line-height:1.6;
+
+}
+
+
+/* =========================
+   TIPOGRAFÍA
+========================= */
+
+h1,
+h2,
+h3{
+
+    font-family:var(--font-title);
+
+    color:var(--color-primary);
+
+    line-height:1.2;
+
+}
+
+
+h1{
+    font-size:3rem;
+}
+
+
+h2{
+    font-size:2rem;
+}
+
+
+h3{
+    font-size:1.3rem;
+}
+
+
+p{
+
+    font-family:var(--font-body);
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    background-color:var(--color-primary);
+
+    color:white;
+
+    text-align:center;
+
+    padding:2rem;
+
+}
+
+
+header h1{
+
+    color:white;
+
+    margin-top:1rem;
+
+}
+
+
+header p{
+
+    opacity:.9;
+
+    margin-top:.5rem;
+
+}
+
+
+header img{
+
+    width:120px;
+
+    height:auto;
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+    flex:1;
+
+    width:min(1100px,90%);
+
+    margin:auto;
+
+    padding:3rem 0;
+
+}
+
+
+/* =========================
+   SECCIÓN DE ACCESO
+========================= */
+
+main section:first-child{
+
+    text-align:center;
+
+}
+
+
+main section:first-child > p{
+
+    margin-top:1rem;
+
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+article{
+
+    background-color:var(--color-light);
+
+    padding:2rem;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+
+article:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    font-family:var(--font-title);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+
+#btn-admin,
+#btn-consulta,
+#btn-confirmar{
+
+    background-color:var(--color-accent);
+
+    color:var(--color-primary);
+
+    padding:.9rem 1.5rem;
+
+    border-radius:10px;
+
+    margin-top:1rem;
+
+}
+
+
+#btn-admin:hover,
+#btn-consulta:hover,
+#btn-confirmar:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+#btn-cancelar{
+
+    background-color:#ddd;
+
+    padding:.9rem 1.5rem;
+
+    border-radius:10px;
+
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input{
+
+    width:100%;
+
+    padding:1rem;
+
+    border:1px solid #d9d9d9;
+
+    border-radius:10px;
+
+    font-family:var(--font-body);
+
+    margin-top:.5rem;
+
+}
+
+
+ 
+/* ===========================
+   MODAL (EVENTO UI)
+   =========================== */
+ 
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed; /* se fija en toda la pantalla */
+  inset: 0; /* top:0 right:0 bottom:0 left:0 (ocupa todo) */
+  background: rgba(0,0,0,0.6);
+ 
+  justify-content: center;
+  align-items: center;
+}
+ 
+/* apertura del modal */
+.modal.show {
+  display: flex; /* activa flexbox para centrar contenido */
+}
+ 
+/* caja */
+.modal-contenido {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+ 
+  animation: fadeIn 0.2s ease-in-out;
+  display:flex;
+    flex-direction:column;
+    gap:1rem
+}
+
+ 
+/* evento visual extra (UX feedback) */
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    background-color:var(--color-primary);
+
+    color:white;
+
+    text-align:center;
+
+    padding:1.5rem;
+
+}
+
+
+footer p{
+
+    margin:.3rem 0;
+
+}
+
+
+
+
+

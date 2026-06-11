@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Configuración básica -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <link rel="icon" type="image/png" href="imagenes/logo.png" />
+    <title>Rutas Seguras Kids | Sistema de Gestión de Rutas Escolares</title>
+
+    <meta
+      name="description"
+      content="Sistema de gestión de rutas escolares desarrollado con HTML, CSS y JavaScript Vanilla para administrar rutas, conductores y estudiantes."
+    />
+
+    <meta
+      name="keywords"
+      content="rutas escolares, transporte escolar, javascript vanilla, gestión de rutas"
+    />
+
+    <meta name="author" content="Valentina Rincon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- JS -->
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO -->
+    <header>
+      <figure>
+        <img
+          src="imagenes/logo.png"
+          alt="Logo de Rutas Seguras Kids"
+          width="120"
+        />
+      </figure>
+
+      <h1>Rutas Seguras Kids</h1>
+
+      <p>Sistema de gestión y consulta de rutas escolares.</p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section aria-labelledby="acceso-sistema">
+        <h2 id="acceso-sistema">Seleccione el tipo de acceso</h2>
+
+        <p>Elija cómo desea ingresar al sistema.</p>
+
+        <section aria-label="Opciones de acceso" id="opciones-acceso">
+          <article>
+            <h3>Administrador</h3>
+
+            <p>Gestiona rutas, estudiantes y horarios.</p>
+
+            <button id="btn-admin" type="button">
+              Ingresar como ADMINISTRADOR
+            </button>
+          </article>
+
+          <article>
+            <h3>Consulta</h3>
+
+            <p>Consulta información de rutas y estudiantes.</p>
+
+            <button id="btn-consulta" type="button">
+              Ingresar para CONSULTA
+            </button>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <!-- MODAL DE ACCESO -->
+    <div id="modal-acceso" class="modal">
+      <div class="modal-contenido">
+        <h2>Verificación de acceso</h2>
+
+        <label for="codigo"> Código de verificación </label>
+
+        <input type="password"  id="codigo" placeholder="Ingrese el código" />
+
+        <button id="btn-confirmar">Confirmar</button>
+
+        <button id="btn-cancelar">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+      <p>© 2026 Rutas Seguras Kids.</p>
+
+      <p>Proyecto académico desarrollado con HTML, CSS y JavaScript Vanilla.</p>
+
+      <p>Hecho por Valentina Rincón.</p>
+    </footer>
+  </body>
+</html>
