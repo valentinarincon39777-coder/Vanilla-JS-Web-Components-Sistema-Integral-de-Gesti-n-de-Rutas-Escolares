@@ -1,0 +1,79 @@
+/* =========================
+   ADMIN.HTML
+========================= */
+
+#opciones-admin{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:2rem;
+
+    margin-top:2rem;
+
+}
+
+
+/* =========================
+   PANEL DE GESTIÓN
+========================= */
+
+.panel-gestion{
+
+    display:flex;
+    flex-wrap: wrap;
+    
+
+    align-items:center;
+    justify-content: center;
+
+    gap:2rem;
+
+
+}
+
+
+.panel-gestion img{
+
+    min-width:300px;
+    
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:var(--radius);
+
+    flex-shrink:0;
+
+}
+
+
+
+
+/* EFECTO ZIGZAG: Se aplica a cada segundo panel (.panel-gestion) */
+.panel-gestion:nth-child(even) {
+    flex-direction: row-reverse; /* Invierte el orden: el artículo queda a la izq, la imagen a la der */
+ 
+}
+
+
+
+
+
+.panel-gestion article {
+    flex: 1;
+    display: flex;             /* Hacemos que el article sea un flex container */
+    flex-direction: column;    /* Ponemos los elementos en columna (texto y botón) */
+    justify-content: center;   /* Centra verticalmente respecto al padre */
+    align-items: center;       /* Centra horizontalmente todo el contenido */
+    text-align: center;  
+    gap:10px      /* Centra el texto */
+}
+
+
+
+/* Ajustamos el botón para que no se alinee a la izquierda, sino que respete el centro */
+.panel-gestion button {
+    align-self: center;        /* Ahora el botón se centrará con el texto */
+}

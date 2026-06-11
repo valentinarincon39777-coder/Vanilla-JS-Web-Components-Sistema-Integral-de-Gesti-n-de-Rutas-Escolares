@@ -7,7 +7,7 @@ const btnConsulta = document.getElementById('btn-consulta');
 const modal = document.getElementById('modal-acceso');
 const btnConfirmar = document.getElementById('btn-confirmar');
 const codigo = document.getElementById('codigo');
-const btnCancelar= document.getElementById('btn-cancelar')
+const btnCancelar= document.querySelector('.btn-cancelar')
 
 
 //variable tipoAcceso es para saber si oprimio boton de administrador o consulta

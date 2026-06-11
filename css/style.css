@@ -227,12 +227,7 @@ button{
 
     transition:var(--transition);
 
-}
 
-
-#btn-admin,
-#btn-consulta,
-#btn-confirmar{
 
     background-color:var(--color-accent);
 
@@ -247,16 +242,14 @@ button{
 }
 
 
-#btn-admin:hover,
-#btn-consulta:hover,
-#btn-confirmar:hover{
+button:hover{
 
     transform:translateY(-2px);
 
 }
 
 
-#btn-cancelar{
+.btn-cancelar{
 
     background-color:#ddd;
 
