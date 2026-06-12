@@ -2,342 +2,286 @@
    ADMIN.HTML
 ========================= */
 
-#opciones-admin{
+#opciones-admin {
+  display: flex;
+  flex-direction: column;
 
-    display:flex;
-    flex-direction:column;
+  gap: 2rem;
 
-    gap:2rem;
-
-    margin-top:2rem;
-
+  margin-top: 2rem;
 }
-
 
 /* =========================
    PANEL DE ELEGIR GESTION GESTIÓN
 ========================= */
 
-.panel-gestion{
+.panel-gestion {
+  display: flex;
+  flex-wrap: wrap;
 
-    display:flex;
-    flex-wrap: wrap;
-    
+  align-items: center;
+  justify-content: center;
 
-    align-items:center;
-    justify-content: center;
-
-    gap:2rem;
-
-
+  gap: 2rem;
 }
 
+.panel-gestion img {
+  min-width: 300px;
 
-.panel-gestion img{
+  height: 220px;
 
-    min-width:300px;
-    
+  object-fit: cover;
 
-    height:220px;
+  border-radius: var(--radius);
 
-    object-fit:cover;
-
-    border-radius:var(--radius);
-
-    flex-shrink:0;
-
+  flex-shrink: 0;
 }
-
-
-
 
 /* EFECTO ZIGZAG: Se aplica a cada segundo panel (.panel-gestion) */
 .panel-gestion:nth-child(even) {
-    flex-direction: row-reverse; /* Invierte el orden: el artículo queda a la izq, la imagen a la der */
- 
+  flex-direction: row-reverse; /* Invierte el orden: el artículo queda a la izq, la imagen a la der */
 }
-
-
-
-
 
 .panel-gestion article {
-    flex: 1;
-    display: flex;             /* Hacemos que el article sea un flex container */
-    flex-direction: column;    /* Ponemos los elementos en columna (texto y botón) */
-    justify-content: center;   /* Centra verticalmente respecto al padre */
-    align-items: center;       /* Centra horizontalmente todo el contenido */
-    text-align: center;  
-    gap:10px      /* Centra el texto */
+  flex: 1;
+  display: flex; /* Hacemos que el article sea un flex container */
+  flex-direction: column; /* Ponemos los elementos en columna (texto y botón) */
+  justify-content: center; /* Centra verticalmente respecto al padre */
+  align-items: center; /* Centra horizontalmente todo el contenido */
+  text-align: center;
+  gap: 10px; /* Centra el texto */
 }
-
-
 
 /* Ajustamos el botón para que no se alinee a la izquierda, sino que respete el centro */
 .panel-gestion button {
-    align-self: center;        /* Ahora el botón se centrará con el texto */
+  align-self: center; /* Ahora el botón se centrará con el texto */
 }
-
-
 
 /* =========================
    MODAL GESTIÓN DE RUTAS
 ========================= */
 
-#modal-gestion .modal-contenido{
-
-    width:min(450px, 90vw);
-
+#modal-gestion .modal-contenido {
+  width: min(450px, 90vw);
 }
 
+.campo-form {
+  display: flex;
 
-.campo-form{
+  flex-direction: column;
 
-    display:flex;
-
-    flex-direction:column;
-
-    gap:.3rem;
-
+  gap: 0.3rem;
 }
 
+.campo-form label {
+  font-weight: 600;
 
-.campo-form label{
+  color: var(--color-primary);
 
-    font-weight:600;
-
-    color:var(--color-primary);
-
-    font-size:.95rem;
-
+  font-size: 0.95rem;
 }
 
-
-.campo-form + .campo-form{
-
-    margin-top:.5rem;
-
+.campo-form + .campo-form {
+  margin-top: 0.5rem;
 }
-
 
 /* =========================
    INPUTS DEL FORMULARIO
 ========================= */
 
-#modal-gestion input{
+#modal-gestion input {
+  margin-top: 0;
 
-    margin-top:0;
-
-    transition:var(--transition);
-
+  transition: var(--transition);
 }
 
+#modal-gestion input:focus {
+  outline: none;
 
-#modal-gestion input:focus{
+  border-color: var(--color-primary);
 
-    outline:none;
-
-    border-color:var(--color-primary);
-
-    box-shadow:0 0 0 3px rgba(26,42,108,.15);
-
+  box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.15);
 }
-
 
 /* =========================
    INPUT HORA
 ========================= */
 
-#hora-salida{
-
-    cursor:pointer;
-
+#hora-salida {
+  cursor: pointer;
 }
 
+#hora-salida::-webkit-calendar-picker-indicator {
+  cursor: pointer;
 
-#hora-salida::-webkit-calendar-picker-indicator{
-
-    cursor:pointer;
-
-    opacity:.8;
-
+  opacity: 0.8;
 }
 
 /* =========================
    CONTROLES CRUD
 ========================= */
 
-.barra-acciones{
+.barra-acciones {
+  display: flex;
 
-    display:flex;
+  gap: 5rem;
 
-    gap:5rem;
-
-    align-items:center;
-
+  align-items: center;
 }
 
-
-
-
-main{
-
-    display:flex;
-    flex-direction:column;
-    gap:1.5rem;
-
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-#filtrar{
-
-    max-width:400px;
-        margin:0;
-
+#filtrar {
+  max-width: 400px;
+  margin: 0;
 }
 
-#btn-nuevo{
+#btn-nuevo {
+  margin: 0;
 
-    margin:0;
-
-    white-space:nowrap;
-
+  white-space: nowrap;
 }
 
+#eventLog {
+  background-color: var(--color-light);
 
+  padding: 1rem;
 
+  border-left: 5px solid var(--color-accent);
 
+  border-radius: 10px;
 
-
-#eventLog{
-
-    background-color:var(--color-light);
-
-    padding:1rem;
-
-    border-left:5px solid var(--color-accent);
-
-    border-radius:10px;
-
-    box-shadow:var(--shadow);
-
+  box-shadow: var(--shadow);
 }
 
 /* =========================
    TABLA DE RUTAS
 ========================= */
 
-table{
+table {
+  width: 100%;
 
-    width:100%;
+  border-collapse: collapse;
 
-    border-collapse:collapse;
+  background-color: white;
 
-    background-color:white;
+  border-radius: var(--radius);
 
-    border-radius:var(--radius);
+  overflow: hidden;
 
-    overflow:hidden;
-
-    box-shadow:var(--shadow);
-
+  box-shadow: var(--shadow);
 }
 
-caption{
+caption {
+  padding: 1rem;
 
-    padding:1rem;
+  font-family: var(--font-title);
 
-    font-family:var(--font-title);
+  font-weight: 700;
 
-    font-weight:700;
-
-    color:var(--color-primary);
-
+  color: var(--color-primary);
 }
 
-thead{
+thead {
+  background-color: var(--color-primary);
 
-    background-color:var(--color-primary);
-
-    color:white;
-
+  color: white;
 }
 
 th,
-td{
+td {
+  padding: 1rem;
 
-    padding:1rem;
-
-    text-align:left;
-
+  text-align: left;
 }
 
-tbody tr{
-
-    border-bottom:1px solid #e5e5e5;
-
+tbody tr {
+  border-bottom: 1px solid #e5e5e5;
 }
 
-tbody tr:hover{
-
-    background-color:var(--color-light);
-
+tbody tr:hover {
+  background-color: var(--color-light);
 }
 
 th:last-child,
-td:last-child{
-
-    text-align:center;
-
+td:last-child {
+  text-align: center;
 }
-
 
 /* =========================
    BOTONES DE ACCIÓN
 ========================= */
 
-.btn-editar{
-
-    margin-right:.5rem;
-
+.btn-editar {
+  margin-right: 0.5rem;
 }
 
-.btn-eliminar{
+.btn-eliminar {
+  background: #e74c3c;
 
-    background:#e74c3c;
-
-    color:white;
-
+  color: white;
 }
 
-.btn-eliminar:hover{
-
-    transform:translateY(-2px);
-
+.btn-eliminar:hover {
+  transform: translateY(-2px);
 }
-
 
 /* =========================
    FORMULARIO RUTAS
 ========================= */
 
-.campo-form{
+.campo-form {
+  display: flex;
 
-    display:flex;
+  flex-direction: column;
 
-    flex-direction:column;
-
-    gap:.35rem;
-
+  gap: 0.35rem;
 }
 
-.campo-form label{
+.campo-form label {
+  font-weight: 600;
 
-    font-weight:600;
-
-    color:var(--color-primary);
-
+  color: var(--color-primary);
 }
 
+/* =========================
+   SELECTS ESTUDIANTES
+========================= */
 
+select {
+  width: 100%;
 
+  padding: 1rem;
 
+  border: 1px solid #d9d9d9;
+
+  border-radius: 10px;
+
+  font-family: var(--font-body);
+
+  background-color: white;
+
+  color: var(--color-text);
+
+  transition: var(--transition);
+}
+
+select:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.15);
+}
+
+#form button {
+  margin-top: 0.5rem;
+}
+
+#btn-cancelar {
+  margin-left: 0.5rem;
+}
