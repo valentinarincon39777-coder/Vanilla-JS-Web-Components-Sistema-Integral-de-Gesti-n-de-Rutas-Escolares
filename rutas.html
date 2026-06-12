@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Configuración básica -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <link rel="icon" type="image/png" href="imagenes/logo.png" />
+    <title>Rutas Seguras Kids | Sistema de Gestión de Rutas Escolares</title>
+
+    <meta
+      name="description"
+      content="Sistema de gestión de rutas escolares desarrollado con HTML, CSS y JavaScript Vanilla para administrar rutas, conductores y estudiantes."
+    />
+
+    <meta
+      name="keywords"
+      content="rutas escolares, transporte escolar, javascript vanilla, gestión de rutas"
+    />
+
+    <meta name="author" content="Valentina Rincon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- JS -->
+    <script src="js/rutas.js" defer></script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO -->
+    <header>
+      <figure>
+        <img
+          src="imagenes/logo.png"
+          alt="Logo de Rutas Seguras Kids"
+          width="120"
+        />
+      </figure>
+
+      <h1>Rutas Seguras Kids</h1>
+
+      <p>Sistema de gestión y consulta de rutas escolares.</p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <div class="barra-acciones">
+        <input type="text" id="buscar" placeholder="Buscar ruta/conductor..." />
+
+        <button id="btn-nuevo">+ Nueva Ruta</button>
+      </div>
+
+      <!-- EVENTO PERSONALIZADO OUTPUT -->
+      <p id="event-log">Eventos: esperando interacción...</p>
+
+      <!-- TABLA DE RUTAS-->
+      <table id="tabla-rutas">
+        <caption>
+          Listado de rutas registradas
+        </caption>
+        <thead>
+          <tr>
+            <th>Nombre de la Ruta</th>
+            <th>Nombre del Conductor</th>
+            <th>Hora de Salida</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo-tabla"></tbody>
+      </table>
+    </main>
+
+    <!-- MODAL DE GESTION -->
+
+    <div id="modal-gestion" class="modal">
+      <div class="modal-contenido">
+        <h2>Gestión de Rutas</h2>
+
+        <form id="form" action="">
+          <div class="campo-form">
+            <label for="ruta-nombre">Nombre de la ruta</label>
+            <input id="ruta-nombre" placeholder="Ingrese la ruta" />
+          </div>
+
+          <div class="campo-form">
+            <label for="conductor-nombre">Nombre del conductor</label>
+            <input
+              type="text"
+              id="conductor-nombre"
+              placeholder="Ingrese el nombre"
+             
+            />
+          </div>
+
+          <div class="campo-form">
+            <label for="hora-salida">Hora de salida</label>
+            <input type="time" id="hora-salida" />
+          </div>
+
+          <button id="btn-guardar" class="btn-guardar" type="submit">
+            Guardar
+          </button>
+          <button id="btn-cancelar" class="btn-cancelar" type="button">
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+      <p>© 2026 Rutas Seguras Kids.</p>
+
+      <p>Proyecto académico desarrollado con HTML, CSS y JavaScript Vanilla.</p>
+
+      <p>Hecho por Valentina Rincón.</p>
+    </footer>
+  </body>
+</html>

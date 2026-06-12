@@ -15,7 +15,7 @@
 
 
 /* =========================
-   PANEL DE GESTIÓN
+   PANEL DE ELEGIR GESTION GESTIÓN
 ========================= */
 
 .panel-gestion{
@@ -77,3 +77,267 @@
 .panel-gestion button {
     align-self: center;        /* Ahora el botón se centrará con el texto */
 }
+
+
+
+/* =========================
+   MODAL GESTIÓN DE RUTAS
+========================= */
+
+#modal-gestion .modal-contenido{
+
+    width:min(450px, 90vw);
+
+}
+
+
+.campo-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.3rem;
+
+}
+
+
+.campo-form label{
+
+    font-weight:600;
+
+    color:var(--color-primary);
+
+    font-size:.95rem;
+
+}
+
+
+.campo-form + .campo-form{
+
+    margin-top:.5rem;
+
+}
+
+
+/* =========================
+   INPUTS DEL FORMULARIO
+========================= */
+
+#modal-gestion input{
+
+    margin-top:0;
+
+    transition:var(--transition);
+
+}
+
+
+#modal-gestion input:focus{
+
+    outline:none;
+
+    border-color:var(--color-primary);
+
+    box-shadow:0 0 0 3px rgba(26,42,108,.15);
+
+}
+
+
+/* =========================
+   INPUT HORA
+========================= */
+
+#hora-salida{
+
+    cursor:pointer;
+
+}
+
+
+#hora-salida::-webkit-calendar-picker-indicator{
+
+    cursor:pointer;
+
+    opacity:.8;
+
+}
+
+/* =========================
+   CONTROLES CRUD
+========================= */
+
+.barra-acciones{
+
+    display:flex;
+
+    gap:5rem;
+
+    align-items:center;
+
+}
+
+
+
+
+main{
+
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+
+}
+
+#buscar{
+
+    max-width:400px;
+        margin:0;
+
+}
+
+#btnNuevo{
+
+    margin:0;
+
+    white-space:nowrap;
+
+}
+
+
+
+
+
+
+#eventLog{
+
+    background-color:var(--color-light);
+
+    padding:1rem;
+
+    border-left:5px solid var(--color-accent);
+
+    border-radius:10px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* =========================
+   TABLA DE RUTAS
+========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background-color:white;
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+caption{
+
+    padding:1rem;
+
+    font-family:var(--font-title);
+
+    font-weight:700;
+
+    color:var(--color-primary);
+
+}
+
+thead{
+
+    background-color:var(--color-primary);
+
+    color:white;
+
+}
+
+th,
+td{
+
+    padding:1rem;
+
+    text-align:left;
+
+}
+
+tbody tr{
+
+    border-bottom:1px solid #e5e5e5;
+
+}
+
+tbody tr:hover{
+
+    background-color:var(--color-light);
+
+}
+
+th:last-child,
+td:last-child{
+
+    text-align:center;
+
+}
+
+
+/* =========================
+   BOTONES DE ACCIÓN
+========================= */
+
+.btn-editar{
+
+    margin-right:.5rem;
+
+}
+
+.btn-eliminar{
+
+    background:#e74c3c;
+
+    color:white;
+
+}
+
+.btn-eliminar:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* =========================
+   FORMULARIO RUTAS
+========================= */
+
+.campo-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.35rem;
+
+}
+
+.campo-form label{
+
+    font-weight:600;
+
+    color:var(--color-primary);
+
+}
+
+
+
+
