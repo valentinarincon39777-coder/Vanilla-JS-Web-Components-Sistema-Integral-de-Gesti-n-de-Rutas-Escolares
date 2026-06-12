@@ -1,6 +1,6 @@
 'use strict';
 
-let rutas = [];
+let rutas = JSON.parse(localStorage.getItem('rutas')) || [];
 let editId = null; //nuestra variable para saber si estamos en modo edición o modo creación
 
 //referenciando mis elementos html a js
@@ -72,9 +72,11 @@ form.addEventListener('submit', function (e) {
       rutas = rutas.map((elementoRuta) =>
         elementoRuta.id == editId ? datos : elementoRuta,
       );
+      guardarRutas();
       logEvent('Ruta correctamente editada');
     } else {
       rutas.push(datos);
+      guardarRutas();
       logEvent('Ruta nueva correctamente registrada');
     }
 
@@ -120,6 +122,7 @@ cuerpoTabla.addEventListener('click', function (e) {
     if (confirmar) {
       rutas = rutas.filter((elementoRuta) => elementoRuta.id !== id);
       renderizar(rutas);
+      guardarRutas();
       logEvent('Ruta eliminada correctamente');
     }
     //editar ruta con find
@@ -148,3 +151,9 @@ filtrar.addEventListener('input', function (e) {
   renderizar(rutasFiltradas);
   logEvent('Rutas filtradas');
 });
+
+renderizar(rutas); //para que al abrir la página automaticamnete se rendericen los datos que ya tenía guardado el localStorage
+
+function guardarRutas() {
+  localStorage.setItem('rutas', JSON.stringify(rutas));
+}
