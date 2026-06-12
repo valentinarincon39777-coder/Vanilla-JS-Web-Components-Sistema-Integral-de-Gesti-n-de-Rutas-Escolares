@@ -43,11 +43,11 @@ btnNuevo.addEventListener('click', function () {
 
 btnCancelar.addEventListener('click', function () {
   modal.classList.remove('show');
-  logEvent('Ventana para agregar nueva ruta cerrada');
+  logEvent('Ventana para agregar/editar nueva ruta cerrada');
 });
 
 //boton guardar
-//administrarems tanto que sucede cuando el boton guardar tiene la accion de crear nuevo usuario como si es para editar un usuario ya existente
+//administraremos tanto que sucede cuando el boton guardar tiene la accion de crear nuevo usuario como si es para editar un usuario ya existente
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
