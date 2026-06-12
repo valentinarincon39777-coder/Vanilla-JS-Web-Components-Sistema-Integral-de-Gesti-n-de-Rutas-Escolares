@@ -15,7 +15,9 @@ const rutaNombre = document.getElementById('ruta-nombre');
 const conductorNombre = document.getElementById('conductor-nombre');
 const horaSalida = document.getElementById('hora-salida');
 const cuerpoTabla = document.getElementById('cuerpo-tabla');
-
+const btnEliminar = document.getElementById('btn-eliminar');
+const btnEditar = document.getElementById('btn-editar');
+const filtrar = document.getElementById('filtrar');
 //funcion con evento personalizado de logs
 
 function logEvent(text) {
@@ -50,30 +52,38 @@ btnCancelar.addEventListener('click', function () {
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const datos = {
-    id: editId || Date.now(),
-    nombreRuta: rutaNombre.value,
-    nombreConductor: conductorNombre.value,
-    horaSalida: horaSalida.value,
-  };
-
-  if (editId !== null) {
-    //modo edicion
-    rutas = rutas.map((elementoRuta) =>
-      elementoRuta.id == editId ? datos : elementoRuta,
-    );
-    logEvent('Ruta correctamente editada');
+  if (
+    !rutaNombre.value.trim() ||
+    !conductorNombre.value.trim() ||
+    !horaSalida.value.trim()
+  ) {
+    alert('No puede dejar los campos vacíos');
+    return;
   } else {
-    rutas.push(datos);
-    logEvent('Ruta nueva correctamente registrada');
-  }
+    const datos = {
+      id: editId || Date.now(),
+      nombreRuta: rutaNombre.value,
+      nombreConductor: conductorNombre.value,
+      horaSalida: horaSalida.value,
+    };
 
-  modal.classList.remove('show');
-  renderizar(rutas);
+    if (editId !== null) {
+      //modo edicion
+      rutas = rutas.map((elementoRuta) =>
+        elementoRuta.id == editId ? datos : elementoRuta,
+      );
+      logEvent('Ruta correctamente editada');
+    } else {
+      rutas.push(datos);
+      logEvent('Ruta nueva correctamente registrada');
+    }
+
+    modal.classList.remove('show');
+    renderizar(rutas);
+  }
 });
 
-
-//renderizar la tabla 
+//renderizar la tabla
 
 function renderizar(listaRutas) {
   ((cuerpoTabla.innerHTML = ''),
@@ -86,8 +96,8 @@ function renderizar(listaRutas) {
   <td>${elementoRuta.nombreConductor}</td>
   <td>${elementoRuta.horaSalida}</td>
   <td>
-    <button class="btn-editar" data-id="${elementoRuta.id}">Editar</button>
-    <button class="btn-eliminar" data-id="${elementoRuta.id}">Eliminar</button>
+    <button class="btn-editar" id='btn-editar' data-id="${elementoRuta.id}">Editar</button>
+    <button class="btn-eliminar"  id='btn-eliminar' data-id="${elementoRuta.id}">Eliminar</button>
 
   </td>
 </tr>
@@ -97,3 +107,44 @@ function renderizar(listaRutas) {
   logEvent('Tabla renderizada');
 }
 
+//delegación de eventos (para editar y eliminar)
+
+cuerpoTabla.addEventListener('click', function (e) {
+  const id = Number(e.target.dataset.id);
+
+  //eliminar con filter
+
+  if (e.target.classList.contains('btn-eliminar')) {
+    const confirmar = confirm('¿Está seguro que desea eliminar la ruta?');
+
+    if (confirmar) {
+      rutas = rutas.filter((elementoRuta) => elementoRuta.id !== id);
+      renderizar(rutas);
+      logEvent('Ruta eliminada correctamente');
+    }
+    //editar ruta con find
+  } else {
+    modal.classList.add('show');
+
+    const rutaEditar = rutas.find((elementoRuta) => elementoRuta.id === id);
+    editId = id;
+    rutaNombre.value = rutaEditar.nombreRuta;
+    conductorNombre.value = rutaEditar.nombreConductor;
+    horaSalida.value = rutaEditar.horaSalida;
+    logEvent('Ruta en edición.');
+  }
+});
+
+//buscador con filter
+
+filtrar.addEventListener('input', function (e) {
+  const texto = e.target.value.toLowerCase();
+
+  const rutasFiltradas = rutas.filter(
+    (elementoRuta) =>
+      elementoRuta.nombreRuta.toLowerCase().includes(texto) ||
+      elementoRuta.nombreConductor.toLowerCase().includes(texto),
+  );
+  renderizar(rutasFiltradas);
+  logEvent('Rutas filtradas');
+});

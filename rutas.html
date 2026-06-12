@@ -49,7 +49,7 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main>
       <div class="barra-acciones">
-        <input type="text" id="buscar" placeholder="Buscar ruta/conductor..." />
+        <input type="text" id="filtrar" placeholder="Buscar ruta/conductor..." />
 
         <button id="btn-nuevo">+ Nueva Ruta</button>
       </div>
@@ -77,37 +77,34 @@
 
     <!-- MODAL DE GESTION -->
 
-    <div id="modal-gestion" class="modal">
+    <div id="modal-gestion" class="modal ">
       <div class="modal-contenido">
         <h2>Gestión de Rutas</h2>
+        
+        <form id='form' action="">
 
-        <form id="form" action="">
-          <div class="campo-form">
-            <label for="ruta-nombre">Nombre de la ruta</label>
-            <input id="ruta-nombre" placeholder="Ingrese la ruta" />
-          </div>
+        <div class="campo-form">
+          <label for="ruta-nombre">Nombre de la ruta</label>
+          <input id="ruta-nombre" placeholder="Ingrese la ruta" required />
+        </div>
 
-          <div class="campo-form">
-            <label for="conductor-nombre">Nombre del conductor</label>
-            <input
-              type="text"
-              id="conductor-nombre"
-              placeholder="Ingrese el nombre"
-             
-            />
-          </div>
+        <div class="campo-form">
+          <label for="conductor-nombre">Nombre del conductor</label>
+          <input
+            type="text"
+            id="conductor-nombre"
+            placeholder="Ingrese el nombre"
+            required
+          />
+        </div>
 
-          <div class="campo-form">
-            <label for="hora-salida">Hora de salida</label>
-            <input type="time" id="hora-salida" />
-          </div>
+        <div class="campo-form">
+          <label for="hora-salida">Hora de salida</label>
+          <input type="time" id="hora-salida" required />
+        </div>
 
-          <button id="btn-guardar" class="btn-guardar" type="submit">
-            Guardar
-          </button>
-          <button id="btn-cancelar" class="btn-cancelar" type="button">
-            Cancelar
-          </button>
+        <button id='btn-guardar' class="btn-guardar" type="submit">Guardar</button>
+        <button id='btn-cancelar' class="btn-cancelar" type="button">Cancelar</button>
         </form>
       </div>
     </div>
@@ -122,3 +119,7 @@
     </footer>
   </body>
 </html>
+
+
+
+
