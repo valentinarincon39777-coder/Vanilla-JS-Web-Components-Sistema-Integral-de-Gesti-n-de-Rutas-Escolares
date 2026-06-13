@@ -184,7 +184,7 @@ class="info-ruta">
 
   <ul class="estudiantes">
 
-    <li>Sin estudiantes registrados</li>
+   
 
   </ul>
 
@@ -212,7 +212,6 @@ class RutaTarjeta extends HTMLElement {
     const cantidadEstudiantes = this.getAttribute('cantidad-estudiantes');
     const nombreConductor = this.getAttribute('nombre-conductor');
     const horaSalida = this.getAttribute('hora-salida');
-    const estudianteRegistrado = this.getAttribute('estudiante-registrados');
 
     //reemplazo/escritura de los valores
 
@@ -222,9 +221,37 @@ class RutaTarjeta extends HTMLElement {
     this.shadowRoot.querySelector('.nombre-conductor').textContent =
       nombreConductor;
     this.shadowRoot.querySelector('.hora-salida').textContent = horaSalida;
-    this.shadowRoot.querySelector('h3').textContent = 'Estudiantes asignados';
+
+    //funcion para renderizar la lsita de estudiantes
+    this.renderEstudiantes();
+  }
+
+  //fuera del connected callaback vamos a hacer la funcion
+  //la razon por la cual tenemos q hacerlo dentro del shadow dom es pq la etiqueta <ul> esta alli dentro.
+  //y nosotros queremos añadirle elementos <li> a dicha etiqueta por cada estudiante, pero para ello, debemos manipular ese <ul> dentro
+  // de el shadow, no por fuera(por ejemplo, no funcionaria gestionar esto en la funciond e tomar info)
+  //ojo: no se usa la palabra function para hacer una funcion dentor de una clase, solo el nombre
+
+  renderEstudiantes() {
+    const contenedorEstudiantes = this.shadowRoot.querySelector('ul');
+    const idRuta = this.getAttribute('ruta-id');
+
+    //debemso filtrar los estudiantes que tienes el rutaPertenece igual a idRuta
+
+    const estudiantesFiltrados = estudiantes.filter(
+      (elementoEstudiante) => elementoEstudiante.rutaPertenece == idRuta,
+    );
+
+    contenedorEstudiantes.innerHTML = '';
+
+    estudiantesFiltrados.forEach((elementoEstudiante) => {
+      contenedorEstudiantes.innerHTML += `
+        <li> ${elementoEstudiante.nombreEstudiante} </li>
+        `;
+    });
   }
 }
+
 customElements.define('ruta-tarjeta', RutaTarjeta);
 
 //toma de valores haciendo conexion con rutas y estudiantes
@@ -241,6 +268,7 @@ function tomarInfo() {
 
     const tarjeta = document.createElement('ruta-tarjeta');
     tarjeta.setAttribute('nombre-ruta', elementoRuta.nombreRuta);
+    tarjeta.setAttribute('ruta-id', elementoRuta.id);
     tarjeta.setAttribute('cantidad-estudiantes', cantidad);
     tarjeta.setAttribute('nombre-conductor', elementoRuta.nombreConductor);
     tarjeta.setAttribute('hora-salida', elementoRuta.horaSalida);
