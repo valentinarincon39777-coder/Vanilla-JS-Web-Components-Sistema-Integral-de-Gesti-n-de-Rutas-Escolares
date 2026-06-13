@@ -120,13 +120,21 @@ cuerpoTabla.addEventListener('click', function (e) {
     const confirmar = confirm('¿Está seguro que desea eliminar la ruta?');
 
     if (confirmar) {
-      rutas = rutas.filter((elementoRuta) => elementoRuta.id !== id);
+      rutas = rutas.filter(
+        (elementoRuta) => elementoRuta.id !== id,
+      );
       renderizar(rutas);
+      
       guardarRutas();
       logEvent('Ruta eliminada correctamente');
+    } else {
+      alert('Eliminación de ruta cancelada');
+      logEvent('Se canceló la eliminación de la ruta');
     }
-    //editar ruta con find
-  } else {
+  }
+  //editar ruta con find
+
+  if (e.target.classList.contains('btn-editar')) {
     modal.classList.add('show');
 
     const rutaEditar = rutas.find((elementoRuta) => elementoRuta.id === id);
