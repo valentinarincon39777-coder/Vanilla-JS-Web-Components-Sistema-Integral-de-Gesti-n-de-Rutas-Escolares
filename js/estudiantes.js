@@ -16,6 +16,7 @@ const estudianteNombre = document.getElementById('estudiante-nombre');
 const gradoCursa = document.getElementById('grado-cursa');
 const rutaPertenece = document.getElementById('ruta-pertenece');
 const cuerpoTabla = document.getElementById('cuerpo-tabla');
+const filtrar = document.getElementById('filtrar');
 //evento personalizado de logs
 
 function logEvent(text) {
@@ -125,6 +126,61 @@ function renderizarTabla(listaEstudiantes, listaRutas) {
   });
 }
 
+//delegacion de eventos (para editar y eliminar)
+
+cuerpoTabla.addEventListener('click', function (e) {
+  const id = Number(e.target.dataset.id);
+
+  if (e.target.classList.contains('btn-eliminar')) {
+    const confirmar = confirm('¿Está seguro que desea eliminar el estudiante ');
+    if (confirmar) {
+      estudiantes = estudiantes.filter(
+        (elementoEstudiante) => elementoEstudiante.id !== id,
+      );
+
+      renderizarTabla(estudiantes, rutas);
+      guardarEstudiantes();
+      eventLog('Estudiante eliminado correctamente');
+    } else {
+      alert('Eliminación de estudiante cancelada');
+      logEvent('Se canceló la eliminación del estudiante');
+    }
+  }
+
+  if (e.target.classList.contains('btn-editar')) {
+    modal.classList.add('show');
+
+    const estudianteEditar = estudiantes.find(
+      (elementoEstudiante) => elementoEstudiante.id === id,
+    );
+    editId = id;
+    estudianteNombre.value = estudianteEditar.nombreEstudiante;
+    gradoCursa.value = estudianteEditar.gradoCursa;
+    rutaPertenece.value = estudianteEditar.rutaPertenece;
+
+    logEvent('Estudiante en edición.');
+  }
+});
+
+//buscador con filter
+
+filtrar.addEventListener('input', function (e) {
+  const texto = e.target.value.toLowerCase();
+
+  const estudiantesFiltrados = estudiantes.filter(
+    (elementoEstudiante) =>
+      elementoEstudiante.nombreEstudiante.toLowerCase().includes(texto) ||
+      elementoEstudiante.rutaPertenece.toLowerCase().includes(texto),
+  );
+
+  console.log(estudiantesFiltrados);
+
+  renderizarTabla(estudiantesFiltrados, rutas);
+
+  logEvent('Estudiantes filtrados');
+});
+
+//renderizar tabla desde un inicio
 renderizarTabla(estudiantes, rutas);
 
 //renderizar lista de rutas en select
