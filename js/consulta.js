@@ -279,3 +279,53 @@ function tomarInfo() {
 }
 
 tomarInfo();
+
+
+
+
+
+//SECCION DE LA API 
+
+const temperaturaActual=document.getElementById('temperatura-actual')
+
+let temperaturaAPI 
+
+const API_URL =
+  'https://api.open-meteo.com/v1/forecast?latitude=8.98&longitude=-79.52&current=temperature_2m';
+
+
+async function cargarTemperatura(){
+try{ 
+  temperaturaActual.innerHTML =` Cargando temperatura...
+  `
+
+  const response = await fetch(API_URL)
+
+  if (!response.ok){
+    throw new Error('API del clima no está funcionando correctamente')
+  }
+
+   const data=await response.json()
+
+ 
+    console.log(data)
+
+    temperaturaAPI= data.current.temperature_2m
+
+    console.log(temperaturaAPI)
+
+
+
+    temperaturaActual.innerHTML=`${temperaturaAPI} °C`
+
+
+  } catch (error){
+  console.warn(error)
+  temperaturaActual.innerHTML=`No se pudo cargar el clima`
+}
+
+}
+
+
+
+  cargarTemperatura()
