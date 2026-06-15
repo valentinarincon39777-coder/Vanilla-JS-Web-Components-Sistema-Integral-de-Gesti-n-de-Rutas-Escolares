@@ -210,6 +210,44 @@ article:hover{
 
 }
 
+ /* =========================
+   CONTENEDOR DE TARJETAS (CENTRADO + GRANDE)
+========================= */
+
+#opciones-acceso{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 3rem;
+
+    width: 100%;
+    max-width: 1000px;
+    margin: 3rem auto 0 auto; /* esto lo centra de verdad */
+
+    padding: 0 1rem;
+    flex-wrap: wrap;
+}
+
+ 
+article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#opciones-acceso article{
+    flex: 1;
+    min-width: 300px;
+    max-width: 420px;
+
+    padding: 2.5rem; /* más aire interno */
+    text-align: center;
+}
+
+.imagen-icono{
+    border-radius: 40px;
+    padding: 30px;
+}
 
 /* =========================
    BOTONES
@@ -347,6 +385,9 @@ footer p{
     margin:.3rem 0;
 
 }
+
+
+
 
 
 

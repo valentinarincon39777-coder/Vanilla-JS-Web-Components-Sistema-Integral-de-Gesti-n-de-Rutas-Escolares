@@ -3,7 +3,6 @@
 ========================= */
 
 @media (max-width: 992px) {
-
   h1 {
     font-size: 2.5rem;
   }
@@ -14,18 +13,20 @@
 
   th,
   td {
-    padding: .8rem;
+    padding: 0.8rem;
   }
 
-}
+  #opciones-acceso {
+        gap: 2rem;
+    }
 
+}
 
 /* =========================
    MÓVILES (<= 768px)
 ========================= */
 
 @media (max-width: 768px) {
-
   h1 {
     font-size: 2rem;
   }
@@ -88,15 +89,21 @@
     font-size: 2.2rem;
   }
 
+  #opciones-acceso {
+        gap: 1.5rem;
+    }
+    
+    #opciones-acceso article {
+        min-width: 280px; 
+        padding: 1.5rem;  
+    }
 }
-
 
 /* =========================
    MÓVILES PEQUEÑOS (<= 480px)
 ========================= */
 
 @media (max-width: 480px) {
-
   h1 {
     font-size: 1.7rem;
   }
@@ -119,13 +126,13 @@
 
   .btn-editar {
     margin-right: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   th,
   td {
-    padding: .6rem;
-    font-size: .9rem;
+    padding: 0.6rem;
+    font-size: 0.9rem;
   }
 
   #panel-clima {
@@ -135,5 +142,13 @@
   #temperatura-actual {
     font-size: 1.8rem;
   }
+  #opciones-acceso {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
 
+    #opciones-acceso article {
+        min-width: 100%; 
+        max-width: 100%;
+    }
 }
