@@ -169,8 +169,7 @@ filtrar.addEventListener('input', function (e) {
 
   const estudiantesFiltrados = estudiantes.filter(
     (elementoEstudiante) =>
-      elementoEstudiante.nombreEstudiante.toLowerCase().includes(texto) ||
-      elementoEstudiante.rutaPertenece.toLowerCase().includes(texto),
+      elementoEstudiante.nombreEstudiante.toLowerCase().includes(texto) 
   );
 
   console.log(estudiantesFiltrados);
