@@ -43,7 +43,7 @@ El sistema cuenta con tres módulos principales:
 * Async/Await
 * Open-Meteo API
 
-## ▶ Instrucciones de ejecución
+## Instrucciones de ejecución
 
 1. Descargar o clonar el repositorio.
 2. Abrir la carpeta  del proyecto.
