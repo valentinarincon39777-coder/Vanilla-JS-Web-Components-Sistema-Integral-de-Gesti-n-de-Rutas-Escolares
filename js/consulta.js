@@ -136,6 +136,55 @@ border-left:4px solid #ffcc00;
 
 
 }
+
+
+
+#panel-clima{
+
+background:linear-gradient(
+    135deg,
+    #eaf7ff,
+    #ffffff
+);
+
+border:2px solid #d6ecff;
+
+border-radius:var(--radius);
+
+padding:1.5rem;
+
+text-align:center;
+
+box-shadow:var(--shadow);
+
+margin-bottom:2rem;
+
+}
+
+#panel-clima h4{
+
+color:#4a7ca5;
+
+font-size:1.2rem;
+
+margin-bottom:.5rem;
+
+}
+
+#temperatura-actual{
+
+font-family:var(--font-title);
+
+font-size:2.8rem;
+
+font-weight:800;
+
+color:#ffb703;
+
+}
+
+
+
 </style>
 
 
@@ -146,6 +195,15 @@ border-left:4px solid #ffcc00;
 
 
 <article class='tarjeta-ruta'> 
+
+      <section id="panel-clima">
+
+        <h4>🌤️ Clima actual de Panamá</h4>
+        <p id="temperatura-actual"></p>
+
+
+
+      </section>
 
 <header class="cabecera-ruta">
 

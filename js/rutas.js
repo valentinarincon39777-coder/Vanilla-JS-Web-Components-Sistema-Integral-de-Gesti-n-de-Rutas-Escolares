@@ -18,6 +18,10 @@ const cuerpoTabla = document.getElementById('cuerpo-tabla');
 const btnEliminar = document.getElementById('btn-eliminar');
 const btnEditar = document.getElementById('btn-editar');
 const filtrar = document.getElementById('filtrar');
+const regionOpera=document.getElementById('region-opera')
+
+
+
 //funcion con evento personalizado de logs
 
 function logEvent(text) {
@@ -54,8 +58,10 @@ form.addEventListener('submit', function (e) {
 
   if (
     !rutaNombre.value.trim() ||
+    !regionOpera.value.trim() ||
     !conductorNombre.value.trim() ||
     !horaSalida.value.trim()
+
   ) {
     alert('No puede dejar los campos vacíos');
     return;
@@ -63,6 +69,7 @@ form.addEventListener('submit', function (e) {
     const datos = {
       id: editId || Date.now(),
       nombreRuta: rutaNombre.value,
+      regionOpera: regionOpera.value, 
       nombreConductor: conductorNombre.value,
       horaSalida: horaSalida.value,
     };
@@ -95,6 +102,7 @@ function renderizar(listaRutas) {
 <tr>
 
   <td>${elementoRuta.nombreRuta}</td>
+  <td> ${elementoRuta.regionOpera} </td>
   <td>${elementoRuta.nombreConductor}</td>
   <td>${elementoRuta.horaSalida}</td>
   <td>
@@ -140,6 +148,7 @@ cuerpoTabla.addEventListener('click', function (e) {
     const rutaEditar = rutas.find((elementoRuta) => elementoRuta.id === id);
     editId = id;
     rutaNombre.value = rutaEditar.nombreRuta;
+    regionOpera.value=rutaEditar.regionOpera
     conductorNombre.value = rutaEditar.nombreConductor;
     horaSalida.value = rutaEditar.horaSalida;
     logEvent('Ruta en edición.');
