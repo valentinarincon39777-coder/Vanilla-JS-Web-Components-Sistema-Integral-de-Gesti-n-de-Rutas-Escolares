@@ -190,7 +190,7 @@ color:#ffb703;
 
 
 
-
+ 
 
 
 
@@ -199,7 +199,7 @@ color:#ffb703;
       <section id="panel-clima">
 
         <h4>🌤️ Clima actual de Panamá</h4>
-        <p id="temperatura-actual"></p>
+        <p class="temperatura-actual"></p>
 
 
 
@@ -270,18 +270,77 @@ class RutaTarjeta extends HTMLElement {
     const cantidadEstudiantes = this.getAttribute('cantidad-estudiantes');
     const nombreConductor = this.getAttribute('nombre-conductor');
     const horaSalida = this.getAttribute('hora-salida');
+    const regionOpera = this.getAttribute('region-opera');
 
     //reemplazo/escritura de los valores
 
     this.shadowRoot.querySelector('.nombre-ruta').textContent = nombreRuta;
+
     this.shadowRoot.querySelector('.badge-estudiantes').textContent =
       cantidadEstudiantes;
     this.shadowRoot.querySelector('.nombre-conductor').textContent =
       nombreConductor;
     this.shadowRoot.querySelector('.hora-salida').textContent = horaSalida;
+    this.shadowRoot.querySelector('.panel-clima, h4').textContent =
+      `🌤️ Clima actual en ${regionOpera}`;
 
     //funcion para renderizar la lsita de estudiantes
     this.renderEstudiantes();
+
+    //SECCION DE LA API
+
+    const temperaturaActual = this.shadowRoot.querySelector(
+      '.temperatura-actual',
+    );
+
+    let temperaturaAPI;
+
+    let API_URL;
+
+    switch (regionOpera) {
+      case 'Panamá':
+        API_URL =
+          'https://api.open-meteo.com/v1/forecast?latitude=8.9823&longitude=-79.5198&current=temperature_2m';
+        break;
+
+      case 'Herrera':
+        API_URL =
+          'https://api.open-meteo.com/v1/forecast?latitude=7.9523&longitude=-80.4382&current=temperature_2m';
+        break;
+
+      case 'Boquete':
+        API_URL =
+          'https://api.open-meteo.com/v1/forecast?latitude=8.7772&longitude=-82.4481&current=temperature_2m';
+        break;
+    }
+
+    async function cargarTemperatura() {
+      try {
+        temperaturaActual.innerHTML = ` Cargando temperatura...
+  `;
+
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error('API del clima no está funcionando correctamente');
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+
+        temperaturaAPI = data.current.temperature_2m;
+
+        console.log(temperaturaAPI);
+
+        temperaturaActual.innerHTML = `${temperaturaAPI} °C`;
+      } catch (error) {
+        console.warn(error);
+        temperaturaActual.innerHTML = `No se pudo cargar el clima`;
+      }
+    }
+
+    cargarTemperatura();
   }
 
   //fuera del connected callaback vamos a hacer la funcion
@@ -331,46 +390,10 @@ function tomarInfo() {
     tarjeta.setAttribute('nombre-conductor', elementoRuta.nombreConductor);
     tarjeta.setAttribute('hora-salida', elementoRuta.horaSalida);
     tarjeta.setAttribute('estudiantes-registrados', 'none');
+    tarjeta.setAttribute('region-opera', elementoRuta.regionOpera);
 
     contenedorTarjetas.append(tarjeta);
   });
 }
 
 tomarInfo();
-
-//SECCION DE LA API
-
-const temperaturaActual = document.getElementById('temperatura-actual');
-
-let temperaturaAPI;
-
-const API_URL =
-  'https://api.open-meteo.com/v1/forecast?latitude=8.98&longitude=-79.52&current=temperature_2m';
-
-async function cargarTemperatura() {
-  try {
-    temperaturaActual.innerHTML = ` Cargando temperatura...
-  `;
-
-    const response = await fetch(API_URL);
-
-    if (!response.ok) {
-      throw new Error('API del clima no está funcionando correctamente');
-    }
-
-    const data = await response.json();
-
-    console.log(data);
-
-    temperaturaAPI = data.current.temperature_2m;
-
-    console.log(temperaturaAPI);
-
-    temperaturaActual.innerHTML = `${temperaturaAPI} °C`;
-  } catch (error) {
-    console.warn(error);
-    temperaturaActual.innerHTML = `No se pudo cargar el clima`;
-  }
-}
-
-cargarTemperatura();
