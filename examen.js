@@ -27,6 +27,11 @@ btnFiltrar.addEventListener('click', function () {
 
   );
 
+  if (filtrarRuta.value === "todas"){
+    renderizarTabla(estudiantes, rutas)
+    return
+  }
+
   renderizarTabla(estudiantesFiltrados, rutas)
 
   logEvent('SE FILTRO POR RUTA');
@@ -35,6 +40,9 @@ btnFiltrar.addEventListener('click', function () {
 //funcion renderizar rutas en select
 function rutasSelect() {
   filtrarRuta.innerHTML = ``;
+  filtrarRuta.innerHTML = `
+  <option value="todas">TODAS</option>
+  `;
 
   rutas.forEach((rutaElemento) => {
     filtrarRuta.innerHTML += `
