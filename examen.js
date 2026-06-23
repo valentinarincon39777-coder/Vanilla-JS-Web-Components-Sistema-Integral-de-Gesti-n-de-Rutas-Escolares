@@ -7,7 +7,7 @@ let editId = null;
 //referenciar elementos html a js
 
 const eventLog = document.getElementById('event-log');
-const btnNuevo = document.getElementById('btn-nuevo');
+const btnFiltrar = document.getElementById('btn-nuevo');
 const modal = document.getElementById('modal-gestion');
 const form = document.getElementById('form');
 const btnCancelar = document.getElementById('btn-cancelar');
@@ -20,18 +20,17 @@ const filtrarRuta = document.getElementById('filtrar-por-ruta');
 
 //examen- filtrar por ruta segun el select
 
-filtrarRuta.addEventListener('click', function (event) {
+btnFiltrar.addEventListener('click', function () {
+  const estudiantesFiltrados = estudiantes.filter(
+    (estudianteElemento) =>
+      estudianteElemento.rutaPertenece === filtrarRuta.value,
 
-    
+  );
 
+  renderizarTabla(estudiantesFiltrados, rutas)
 
-    console.log()
+  logEvent('SE FILTRO POR RUTA');
 });
-
-
-
-
-
 
 //funcion renderizar rutas en select
 function rutasSelect() {
@@ -39,7 +38,7 @@ function rutasSelect() {
 
   rutas.forEach((rutaElemento) => {
     filtrarRuta.innerHTML += `
-         <option value="${rutaElemento.nombreRuta}">${rutaElemento.nombreRuta}</option>
+         <option value="${rutaElemento.id}">${rutaElemento.nombreRuta}</option>
          `;
   });
 }
@@ -60,13 +59,6 @@ function logEvent(text) {
 }
 
 //abrir modal con boton nuevo estudiante y cerrar modal con boton cancelar
-
-btnNuevo.addEventListener('click', function () {
-  modal.classList.add('show');
-  editId = null;
-  form.reset();
-  logEvent('Ventana para agregar nuevo estudiante abierta');
-});
 
 btnCancelar.addEventListener('click', function () {
   modal.classList.remove('show');
